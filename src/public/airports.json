@@ -5941,13 +5941,13 @@
    },
    {
       "iata":"EII",
-      "lon":-9.433333,
+      "lon":-157.375556,
       "iso":"US",
       "status":1,
       "name":"Egegik Airport",
       "continent":"NA",
       "type":"airport",
-      "lat":53.033333,
+      "lat":58.185556,
       "size":"medium"
    },
    {
@@ -6073,13 +6073,13 @@
    },
    {
       "iata":"AKW",
-      "lon":49.683334,
+      "lon": -133.076111,
       "iso":"US",
       "status":1,
       "name":"Klawock Airport",
       "continent":"NA",
       "type":"airport",
-      "lat":30.75,
+      "lat":55.579167,
       "size":"medium"
    },
    {
@@ -6282,13 +6282,13 @@
    },
    {
       "iata":"PBV",
-      "lon":-57.333332,
+      "lon":-113.510278,
       "iso":"US",
       "status":1,
       "name":"St George Airport",
       "continent":"NA",
       "type":"airport",
-      "lat":-11.516667,
+      "lat":37.036389,
       "size":"medium"
    },
    {
