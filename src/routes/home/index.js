@@ -15,6 +15,14 @@ export const path = '/';
 export const action = async (state) => {
   const response = await fetch('/graphql?query={news{title,link,contentSnippet}}');
   const { data } = await response.json();
+  // var airports;
+  // const airportsData = await fetch('/airports.json').then(function(res) {
+	// 	return res.text();
+	// }).then(function(body) {
+	// 	console.log(body);
+	// });
+  const airportsData = await fetch('/airports.json');
+  const airports = await airportsData.json();
   state.context.onSetTitle('React.js Starter Kit');
-  return <Home news={data.news} />;
+  return <Home news={data.news} airports={airports} />;
 };

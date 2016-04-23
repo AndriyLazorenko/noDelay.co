@@ -8,13 +8,39 @@
  */
 
 import React, { PropTypes } from 'react';
+import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
+import { triggerEvent } from "react-google-maps/lib/utils";
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
 
-function Home({ news }) {
+function Home({ news, airports }) {
   return (
     <div className={s.root}>
       <div className={s.container}>
+        <h1 className="{s.title}">Map</h1>
+          <GoogleMapLoader
+            containerElement={
+              <div
+                style={{
+                  height: '60vw',
+                }}
+              />
+            }
+            googleMapElement={
+              <GoogleMap
+                ref={(map) => console.log(map)}
+                defaultZoom={3}
+                defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+              >
+                {airports.map(marker => (
+                  <Marker
+                    position={{ lat: marker.lat, lng: marker.lon }}
+                    title={ marker.name }
+                  />
+                ))}
+              </GoogleMap>
+            }
+          />
         <h1 className={s.title}>React.js News</h1>
         <ul className={s.news}>
           {news.map((item, index) => (
@@ -37,6 +63,12 @@ Home.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     contentSnippet: PropTypes.string,
+  })).isRequired,
+  airports: PropTypes.arrayOf(PropTypes.shape({
+    lat: PropTypes.number,
+    lon: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    size: PropTypes.string,
   })).isRequired,
 };
 
