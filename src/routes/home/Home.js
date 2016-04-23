@@ -8,8 +8,10 @@
  */
 
 import React, { PropTypes } from 'react';
-import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
-import { triggerEvent } from "react-google-maps/lib/utils";
+import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
+import { Row, Column } from 'react-foundation';
+import DelaySearch from '../../components/DelaySearch/DelaySearch'
+// import Select2 from 'react-select2-wrapper';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
 
@@ -17,6 +19,22 @@ function Home({ news, airports }) {
   return (
     <div className={s.root}>
       <div className={s.container}>
+        <div className="search-grid">
+          <Row className="display">
+            <Column medium={6} large={6}>
+              <DelaySearch />
+            </Column>
+            <Column medium={6} large={6}>
+              <select>
+                {
+                  airports.sort((a, b) => a.name > b.name).map((marker, index) => (
+                    <option value={index}>{marker.name} ({marker.iata})</option>
+                  ))
+                }
+              </select>
+            </Column>
+          </Row>
+        </div>
         <h1 className="{s.title}">Map</h1>
           <GoogleMapLoader
             containerElement={
