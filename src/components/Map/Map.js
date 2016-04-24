@@ -1,6 +1,5 @@
 import React from 'react';
 import AppStore from '../../stores/AppStore.js';
-import AppAction from '../../actions/AppActions.js';
 import { Row, Column, Link, Callout, Colors } from 'react-foundation';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 

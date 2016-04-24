@@ -17,7 +17,16 @@ const _clearDatetime = () => { _datetime = ''; };
 const _clearDelay = () => { _delay = ''; };
 
 const _getAirports = () => _airports;
-const _getDelay = () => _delay;
+const _getDelay = () => {
+  if (!_from || !_to || !_datetime) {
+    return;
+  }
+  _delay = {
+    from: parseInt(Math.random() * 10),
+    to: parseInt(Math.random() * 20 + 10),
+    reliability: parseInt(Math.random() * 45 + 5),
+  };
+};
 
 const _setAirports = () => {
   const airportsData = fetch('/airports.json').then(function(res) {

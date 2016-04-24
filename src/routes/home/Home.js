@@ -8,16 +8,18 @@
  */
 
 import React, { PropTypes } from 'react';
-import DelaySearch from '../../components/DelaySearch/DelaySearch'
-import Map from '../../components/Map/Map'
+import DelaySearch from '../../components/DelaySearch/DelaySearch';
+import DelayData from '../../components/DelayData/DelayData';
+import Map from '../../components/Map/Map';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
 
-function Home({ news, airports }) {
+function Home({}) {
   return (
     <div className={s.root}>
       <div className={s.container}>
         <DelaySearch />
+        <DelayData />
         <Map />
       </div>
     </div>
@@ -25,11 +27,6 @@ function Home({ news, airports }) {
 }
 
 Home.propTypes = {
-  // news: PropTypes.arrayOf(PropTypes.shape({
-  //   title: PropTypes.string.isRequired,
-  //   link: PropTypes.string.isRequired,
-  //   contentSnippet: PropTypes.string,
-  // })).isRequired,
   airports: PropTypes.arrayOf(PropTypes.shape({
     lat: PropTypes.number,
     lon: PropTypes.number,

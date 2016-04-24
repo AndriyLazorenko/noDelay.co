@@ -137,7 +137,10 @@ class DelaySearch extends React.Component {
           </Row>
           <Row className="display">
             <Column medium={12} large={12}>
-              <Link isExpanded>Have I time for coffee?</Link>
+              <Link
+                isExpanded
+                onClick={AppAction.loadDelay}
+              >Have I time for coffee?</Link>
             </Column>
           </Row>
         </Callout>

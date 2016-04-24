@@ -1,0 +1,6 @@
+{
+  "name": "DelayData",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DelayData.js"
+}
