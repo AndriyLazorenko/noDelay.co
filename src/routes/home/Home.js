@@ -30,8 +30,8 @@ function Home({ news, airports }) {
             googleMapElement={
               <GoogleMap
                 ref={(map) => console.log(map)}
-                defaultZoom={3}
-                defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+                defaultZoom={4}
+                defaultCenter={{ lat: 39.833333, lng: -98.583333 }}
               >
                 {airports.map(marker => (
                   <Marker

@@ -104,6 +104,7 @@ const AppStore = Object.assign(EventEmitter.prototype, {
       case AppConstants.CLEAR:
         _clearFrom();
         _clearTo();
+        _clearDatetime();
         _clearDelay();
         break;
 
