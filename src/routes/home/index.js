@@ -15,6 +15,5 @@ export const path = '/';
 export const action = async (state) => {
   const airportsData = await fetch('/airports.json');
   const airports = await airportsData.json();
-  state.context.onSetTitle('React.js Starter Kit');
   return <Home airports={airports} />;
 };
