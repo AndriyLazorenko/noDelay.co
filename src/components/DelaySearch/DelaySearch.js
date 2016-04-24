@@ -8,6 +8,7 @@ import Datetime from 'react-datetime';
 const getAirports = () => AppStore.getAirports();
 const getFrom = () => AppStore.getFrom();
 const getTo = () => AppStore.getTo();
+const getDatetime = () => AppStore.getDatetime();
 
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
@@ -32,13 +33,7 @@ const renderSuggestion = suggestion => {
 class DelaySearch extends React.Component {
   constructor() {
     super();
-    this.state = {
-      airports: getAirports(),
-      from: getFrom(),
-      to: getTo(),
-      suggestionsTo: getSuggestions(getTo()),
-      suggestionsFrom: getSuggestions(getFrom()),
-    };
+    this.state = this.getState();
     this._onChange = this._onChange.bind(this);
     this.handleChangeTo = this.handleChangeTo.bind(this);
     this.handleChangeFrom = this.handleChangeFrom.bind(this);
@@ -53,10 +48,12 @@ class DelaySearch extends React.Component {
   }
 
   getState() {
+    console.log('states', getDatetime());
     const state = {
       airports: getAirports(),
       from: getFrom(),
       to: getTo(),
+      datetime: getDatetime(),
       suggestionsTo: getSuggestions(getTo()),
       suggestionsFrom: getSuggestions(getFrom()),
     };
@@ -75,6 +72,20 @@ class DelaySearch extends React.Component {
     AppAction.selectFrom(newValue.newValue);
   }
 
+  handleChangeDatetime(moment) {
+    if (typeof moment === 'string') {
+      AppAction.setDatetime(event);
+    } else {
+      AppAction.setDatetime(moment._d.toString());
+    }
+  }
+
+  datetimeValidation(currentDate) {
+    const yesterday = Datetime.moment().subtract(1, 'day');
+    const in5days = Datetime.moment().subtract(-5, 'day');
+    return currentDate.isAfter(yesterday) && currentDate.isBefore(in5days);
+  }
+
   render() {
     const suggestionsTo = this.state.suggestionsTo;
     const inputPropsFrom = {
@@ -88,6 +99,9 @@ class DelaySearch extends React.Component {
       value: this.state.to,
       onChange: this.handleChangeTo,
     };
+    const inputPropsDatetime = {
+      placeholder: 'Select departing date and time'
+    }
     return (
       <div className="search-grid">
         <Callout>
@@ -112,7 +126,13 @@ class DelaySearch extends React.Component {
                 />
             </Column>
             <Column medium={12} large={4}>
-              <Datetime />
+              <Datetime
+                value={this.state.datetime}
+                onChange={this.handleChangeDatetime}
+                isValidDate={this.datetimeValidation}
+                locale="us"
+                inputProps={inputPropsDatetime}
+            />
             </Column>
           </Row>
           <Row className="display">

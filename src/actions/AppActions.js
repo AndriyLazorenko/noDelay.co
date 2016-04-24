@@ -17,6 +17,11 @@ export default {
       actionType: AppConstants.SELECT_TO, airport,
     });
   },
+  setDatetime(datetime) {
+    dispatch({
+      actionType: AppConstants.SET_DATETIME, datetime,
+    });
+  },
   loadDelay() {
     dispatch({
       actionType: AppConstants.LOAD_DELAY,

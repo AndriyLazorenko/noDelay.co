@@ -8,10 +8,12 @@ const CHANGE_EVENT = 'change';
 let _airports = '';
 let _from = '';
 let _to = '';
+let _datetime = '';
 let _delay = '';
 
 const _clearFrom = () => { _from = ''; };
 const _clearTo = () => { _to = ''; };
+const _clearDatetime = () => { _datetime = ''; };
 const _clearDelay = () => { _delay = ''; };
 
 const _getAirports = () => _airports;
@@ -28,6 +30,7 @@ _setAirports();
 const _setFrom = from => { _from = from; };
 const _setTo = to => { _to = to; };
 const _setDelay = delay => { _delay = delay; };
+const _setDatetime = datetime => { _datetime = datetime; };
 
 const _interpretExpression = (expression) => {
   try {
@@ -88,6 +91,10 @@ const AppStore = Object.assign(EventEmitter.prototype, {
     return _to;
   },
 
+  getDatetime() {
+    return _datetime;
+  },
+
   getDelay() {
     return _delay;
   },
@@ -114,6 +121,10 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 
       case AppConstants.SELECT_TO:
         _setTo(action.airport);
+        break;
+
+      case AppConstants.SET_DATETIME:
+        _setDatetime(action.datetime);
         break;
 
       default:
