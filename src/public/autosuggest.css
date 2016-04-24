@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.react-autosuggest__input {
+/*.react-autosuggest__input {
   width: 240px;
   height: 30px;
   padding: 10px 20px;
@@ -11,11 +11,11 @@
   font-size: 16px;
   border: 1px solid #aaa;
   border-radius: 4px;
-}
+}*/
 
-.react-autosuggest__input:focus {
+/*.react-autosuggest__input:focus {
   outline: none;
-}
+}*/
 
 .react-autosuggest__container--open .react-autosuggest__input {
   border-bottom-left-radius: 0;

@@ -1,7 +1,7 @@
 import React from 'react';
 import AppStore from '../../stores/AppStore.js';
 import AppAction from '../../actions/AppActions.js';
-import { Row, Column } from 'react-foundation';
+import { Row, Column, Link, Callout, Colors } from 'react-foundation';
 import Autosuggest from 'react-autosuggest';
 
 const getAirports = () => AppStore.getAirports();
@@ -24,7 +24,7 @@ const getSuggestionValue = suggestion => { // when suggestion selected, this fun
 
 const renderSuggestion = suggestion => {
   return (
-    <span>{suggestion.name}</span>
+    <span>{suggestion.name} ({suggestion.iata})</span>
   );
 };
 
@@ -89,24 +89,34 @@ class DelaySearch extends React.Component {
     };
     return (
       <div className="search-grid">
-        <Row className="display">
-          <Column medium={6} large={6}>
-            <Autosuggest suggestions={suggestionsFrom}
-              onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={renderSuggestion}
-              inputProps={inputPropsFrom}
-            />
-          </Column>
-          <Column medium={6} large={6}>
-            <Autosuggest suggestions={suggestionsTo}
-              onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={renderSuggestion}
-              inputProps={inputPropsTo}
-            />
-          </Column>
-        </Row>
+        <Callout>
+          <Callout color={Colors.SECONDARY}>
+            So, choose your departing and destinations airports (USA only) and date
+          </Callout>
+          <Row className="display">
+            <Column medium={6} large={6}>
+              <Autosuggest suggestions={suggestionsFrom}
+                onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputPropsFrom}
+                />
+            </Column>
+            <Column medium={6} large={6}>
+              <Autosuggest suggestions={suggestionsTo}
+                onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputPropsTo}
+                />
+            </Column>
+          </Row>
+          <Row className="display">
+            <Column medium={12} large={12}>
+              <Link isExpanded>Have I time for coffee?</Link>
+            </Column>
+          </Row>
+        </Callout>
       </div>
     );
   }
