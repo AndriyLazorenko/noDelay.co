@@ -3,6 +3,7 @@ import AppStore from '../../stores/AppStore.js';
 import AppAction from '../../actions/AppActions.js';
 import { Row, Column, Link, Callout, Colors } from 'react-foundation';
 import Autosuggest from 'react-autosuggest';
+import Datetime from 'react-datetime';
 
 const getAirports = () => AppStore.getAirports();
 const getFrom = () => AppStore.getFrom();
@@ -94,7 +95,7 @@ class DelaySearch extends React.Component {
             So, choose your departing and destinations airports (USA only) and date
           </Callout>
           <Row className="display">
-            <Column medium={6} large={6}>
+            <Column medium={6} large={4}>
               <Autosuggest suggestions={suggestionsFrom}
                 onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
                 getSuggestionValue={getSuggestionValue}
@@ -102,13 +103,16 @@ class DelaySearch extends React.Component {
                 inputProps={inputPropsFrom}
                 />
             </Column>
-            <Column medium={6} large={6}>
+            <Column medium={6} large={4}>
               <Autosuggest suggestions={suggestionsTo}
                 onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputPropsTo}
                 />
+            </Column>
+            <Column medium={12} large={4}>
+              <Datetime />
             </Column>
           </Row>
           <Row className="display">
