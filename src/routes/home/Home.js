@@ -8,8 +8,8 @@
  */
 
 import React, { PropTypes } from 'react';
-import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 import DelaySearch from '../../components/DelaySearch/DelaySearch'
+import Map from '../../components/Map/Map'
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
 
@@ -18,30 +18,7 @@ function Home({ news, airports }) {
     <div className={s.root}>
       <div className={s.container}>
         <DelaySearch />
-        <h1 className="{s.title}">Map</h1>
-          <GoogleMapLoader
-            containerElement={
-              <div
-                style={{
-                  height: '60vw',
-                }}
-              />
-            }
-            googleMapElement={
-              <GoogleMap
-                ref={(map) => console.log(map)}
-                defaultZoom={4}
-                defaultCenter={{ lat: 39.833333, lng: -98.583333 }}
-              >
-                {airports.map(marker => (
-                  <Marker
-                    position={{ lat: marker.lat, lng: marker.lon }}
-                    title={ marker.name }
-                  />
-                ))}
-              </GoogleMap>
-            }
-          />
+        <Map />
       </div>
     </div>
   );
