@@ -21,10 +21,33 @@ const _getDelay = () => {
   if (!_from || !_to || !_datetime) {
     return;
   }
+  const delays = [
+    {
+      from: '0',
+      to: '15 minutes',
+    },
+    {
+      from: '15',
+      to: '30 minutes',
+    },
+    {
+      from: '30 minutes',
+      to: '1 hour',
+    },
+    {
+      from: '1',
+      to: '6 hours',
+    },
+    {
+      from: '6',
+      to: '24 hours',
+    },
+  ];
+  const myDelay = delays[parseInt(Math.random() * 4)];
   _delay = {
-    from: parseInt(Math.random() * 10),
-    to: parseInt(Math.random() * 20 + 10),
-    reliability: parseInt(Math.random() * 45 + 5),
+    from: myDelay.from,
+    to: myDelay.to,
+    reliability: parseInt(Math.random() * 29 + 21),
   };
 };
 

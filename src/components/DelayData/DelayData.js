@@ -62,7 +62,7 @@ class DelayData extends React.Component {
           <p>
           From <strong>{this.state.delay.from}</strong> to
           <strong> {this.state.delay.to}</strong> minutes
-          with <strong>{this.state.delay.reliability}%</strong>
+          with probability <strong>{this.state.delay.reliability}%</strong>
 
           </p>
           <Link
