@@ -1,0 +1,8 @@
+.Demo__some-network {
+  display: inline-block;
+  margin-left: 30px;
+  text-align: center;
+}
+.Demo__some-network__share-count {
+  font-size: 12px;
+}
