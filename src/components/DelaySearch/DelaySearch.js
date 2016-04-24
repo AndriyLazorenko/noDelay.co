@@ -1,6 +1,7 @@
 import React from 'react';
 import AppStore from '../../stores/AppStore.js';
 import AppAction from '../../actions/AppActions.js';
+import { Row, Column } from 'react-foundation';
 import Autosuggest from 'react-autosuggest';
 
 const getAirports = () => AppStore.getAirports();
@@ -74,22 +75,39 @@ class DelaySearch extends React.Component {
   }
 
   render() {
-    // const from = this.state.from;
-    const to = this.state.to;
-    const suggestionsFrom = this.state.suggestionsFrom;
     const suggestionsTo = this.state.suggestionsTo;
     const inputPropsFrom = {
-      placeholder: 'Type airport name or code',
+      placeholder: 'Type departure airport name or code',
       value: this.state.from,
       onChange: this.handleChangeFrom,
     };
+    const suggestionsFrom = this.state.suggestionsFrom;
+    const inputPropsTo = {
+      placeholder: 'Type destination airport name or code',
+      value: this.state.to,
+      onChange: this.handleChangeTo,
+    };
     return (
-      <Autosuggest suggestions={suggestionsFrom}
-        onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
-        inputProps={inputPropsFrom}
-      />
+      <div className="search-grid">
+        <Row className="display">
+          <Column medium={6} large={6}>
+            <Autosuggest suggestions={suggestionsFrom}
+              onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputPropsFrom}
+            />
+          </Column>
+          <Column medium={6} large={6}>
+            <Autosuggest suggestions={suggestionsTo}
+              onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputPropsTo}
+            />
+          </Column>
+        </Row>
+      </div>
     );
   }
 }

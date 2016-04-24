@@ -9,9 +9,7 @@
 
 import React, { PropTypes } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
-import { Row, Column } from 'react-foundation';
 import DelaySearch from '../../components/DelaySearch/DelaySearch'
-// import Select2 from 'react-select2-wrapper';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
 
@@ -19,22 +17,7 @@ function Home({ news, airports }) {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <div className="search-grid">
-          <Row className="display">
-            <Column medium={6} large={6}>
-              <DelaySearch />
-            </Column>
-            <Column medium={6} large={6}>
-              <select>
-                {
-                  airports.sort((a, b) => a.name > b.name).map((marker, index) => (
-                    <option value={index}>{marker.name} ({marker.iata})</option>
-                  ))
-                }
-              </select>
-            </Column>
-          </Row>
-        </div>
+        <DelaySearch />
         <h1 className="{s.title}">Map</h1>
           <GoogleMapLoader
             containerElement={
@@ -59,29 +42,17 @@ function Home({ news, airports }) {
               </GoogleMap>
             }
           />
-        <h1 className={s.title}>React.js News</h1>
-        <ul className={s.news}>
-          {news.map((item, index) => (
-            <li key={index} className={s.newsItem}>
-              <a href={item.link} className={s.newsTitle}>{item.title}</a>
-              <span
-                className={s.newsDesc}
-                dangerouslySetInnerHTML={{ __html: item.contentSnippet }}
-              />
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
 }
 
 Home.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    contentSnippet: PropTypes.string,
-  })).isRequired,
+  // news: PropTypes.arrayOf(PropTypes.shape({
+  //   title: PropTypes.string.isRequired,
+  //   link: PropTypes.string.isRequired,
+  //   contentSnippet: PropTypes.string,
+  // })).isRequired,
   airports: PropTypes.arrayOf(PropTypes.shape({
     lat: PropTypes.number,
     lon: PropTypes.number,
