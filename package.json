@@ -5,8 +5,8 @@
     "npm": ">=3.3 <4"
   },
   "dependencies": {
-    "babel": "^6.5.2",
-    "babel-polyfill": "6.6.1",
+    "babel-cli": "^6.7.7",
+    "babel-polyfill": "^6.6.1",
     "babel-runtime": "6.6.1",
     "bluebird": "3.3.3",
     "body-parser": "1.15.0",
@@ -113,11 +113,11 @@
     "csslint": "csscomb src/components --lint --verbose",
     "csscomb": "csscomb src/components --verbose",
     "test": "eslint src && jest",
-    "clean": "./node_modules/.bin/babel-node tools/run clean",
-    "copy": "./node_modules/.bin/babel-node tools/run copy",
-    "bundle": "./node_modules/.bin/babel-node tools/run bundle",
-    "build": "./node_modules/.bin/babel-node tools/run build",
-    "deploy": "./node_modules/.bin/babel-node tools/run deploy",
-    "start": "./node_modules/.bin/babel-node tools/run start"
+    "clean": "./node_modules/babel-cli/bin/babel-node.js tools/run clean",
+    "copy": "./node_modules/babel-cli/bin/babel-node.js tools/run copy",
+    "bundle": "./node_modules/babel-cli/bin/babel-node.js tools/run bundle",
+    "build": "./node_modules/babel-cli/bin/babel-node.js tools/run build",
+    "deploy": "./node_modules/babel-cli/bin/babel-node.js tools/run deploy",
+    "start": "./node_modules/babel-cli/bin/babel-node.js tools/run start"
   }
 }
