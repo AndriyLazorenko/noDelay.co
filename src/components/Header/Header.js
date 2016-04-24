@@ -23,8 +23,9 @@ function Header() {
           <span className={s.brandTxt}>No Delay</span>
         </Link>
         <div className={s.banner}>
-          <h1 className={s.bannerTitle}>React</h1>
-          <p className={s.bannerDesc}>Complex web apps made easy</p>
+          <h1 className={s.bannerTitle}>Own your time</h1>
+          <p className={s.bannerDesc}>NoDelay.Co provides possibility to predict
+            delay of any flight in USA</p>
         </div>
       </div>
     </div>
